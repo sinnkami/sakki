@@ -1,8 +1,8 @@
 require "bundler/setup"
 Bundler.require(:default)
 
-app = Proc.new do |env|
-  [200, { 'Content-Type' => 'text/plain'}, ['Hello World!']]
+class App < Sinatra::Base
+  get "/" do
+    "Hello World!"
+  end
 end
-
-Rack::Handler::WEBrick.run app
