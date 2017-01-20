@@ -9,4 +9,9 @@ class App < Sinatra::Base
   get "/" do
     slim :index
   end
+
+  get "/:name" do
+    @name = params[:name]
+    slim :index
+  end
 end
