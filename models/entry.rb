@@ -15,7 +15,8 @@ class Entry
 
   def body_html
     pipeline = HTML::Pipeline.new [
-      HTML::Pipeline::MarkdownFilter
+      HTML::Pipeline::MarkdownFilter,
+      HTML::Pipeline::AutolinkFilter
     ]
     result = pipeline.call(body)
 
