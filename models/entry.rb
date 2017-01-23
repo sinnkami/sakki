@@ -12,4 +12,13 @@ class Entry
       end
     end
   end
+
+  def body_html
+    pipeline = HTML::Pipeline.new [
+      HTML::Pipeline::MarkdownFilter
+    ]
+    result = pipeline.call(body)
+
+    result[:output].to_s
+  end
 end
