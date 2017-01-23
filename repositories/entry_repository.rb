@@ -8,12 +8,15 @@ class EntryRepository
 
   # 保存するところ
   def save(entry)
-    columns = ['title', 'body']
-    query = "INSERT INTO `entries` (#{columns.join(", ")}) VALUES (?, ?)"
-    stmt = @db.prepare(query)
-    stmt.execute(entry.title, entry.body)
+    columns = Entry::COLUMNS.reject { |key| key == :id }
+    values = columns.map { |key| entry.instance_variable_get("@#{key}") }
 
-    return @db.last_id
+    query = "INSERT INTO `entries` (#{columns.join(", ")}) VALUES (#{columns.map { '?' }.join(', ')})"
+    stmt = @db.prepare(query)
+    stmt.execute(*values)
+
+    entry.id = @db.last_id
+    return entry.id
   end
 
   # 読み取るところ
@@ -23,9 +26,7 @@ class EntryRepository
     res = stmt.execute(id)
 
     data = res.first
-    entry = Entry.new
-    entry.title = data["title"]
-    entry.body = data["body"]
+    entry = Entry.new(data)
 
     return entry
   end
@@ -37,12 +38,10 @@ class EntryRepository
     res = @db.query(query)
 
     res.each do |row|
-      entry = Entry.new
-      entry.title = row["title"]
-      entry.body = row["body"]
+      entry = Entry.new(row)
       entries.push(entry)
     end
-    
+
     entries.each(&block)
   end
 end
