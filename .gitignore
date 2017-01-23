@@ -1,3 +1,4 @@
+.gitignore
 .bundle
 .ruby-version
 memo.md
