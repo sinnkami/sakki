@@ -19,6 +19,12 @@ class App < Sinatra::Base
     set :views, settings.root + "/views"
   end
 
+  helpers do
+    def entry_repository
+      @entry_repository ||= EntryRepository.new
+    end
+  end
+
   get "/" do
     slim :index
   end
