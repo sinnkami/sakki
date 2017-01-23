@@ -34,7 +34,9 @@ class App < Sinatra::Base
   end
 
   get "/entries/:id" do
+    @entry = entry_repository.fetch(params[:id].to_i)
 
+    slim :entry
   end
 
   post "/entries" do
