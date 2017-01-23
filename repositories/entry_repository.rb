@@ -1,4 +1,7 @@
 class EntryRepository
+  # 便利組み込みモジュール
+  include Enumerable
+
   def initialize
     @entries = []
   end
@@ -12,5 +15,10 @@ class EntryRepository
   # 読み取るところ
   def fetch(id)
     @entries[id]
+  end
+
+  # eachで追加できる
+  def each(&block)
+    @entries.each(&block)
   end
 end
