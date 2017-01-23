@@ -4,6 +4,7 @@ GEM
     backports (3.6.8)
     multi_json (1.12.1)
     mustermann (1.0.0.beta2)
+    mysql2 (0.4.5)
     rack (2.0.1)
     rack-protection (2.0.0.beta2)
       rack
@@ -32,6 +33,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  mysql2
   rack
   sinatra (~> 2.0.0beta2)
   sinatra-contrib (~> 2.0.0beta2)
