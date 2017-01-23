@@ -1,8 +1,6 @@
-doctype 5
-html
-  head
-    meta(charset="UTF-8")
-    title Sakki
+h1 Hello, I'm #{@name || "sakki"}!
 
-  body
-    h1 Hello, I'm #{@name || "sakki"}!
+ul
+  - entry_repository.each_with_index do |entry, id|
+    li
+      a(href="/entries/#{id}")= entry.title
