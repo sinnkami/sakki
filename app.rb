@@ -24,7 +24,13 @@ class App < Sinatra::Base
   end
 
   post "/entries" do
+    entry = Entry.new
+    entry.title = params[:title]
+    entry.body = params[:body]
 
+    id = entry_repository.save(entry)
+
+    redirect to("/entries/#{id}")
   end
 
 end
