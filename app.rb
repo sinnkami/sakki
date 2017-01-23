@@ -2,6 +2,14 @@ require "bundler/setup"
 Bundler.require(:default)
 require "sinatra/reloader"
 
+Dir["models/*.rb"].each do |model|
+  require_relative model
+end
+
+Dir["repositries/*.rb"].each do |model|
+  require_relative model
+end
+
 class App < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
