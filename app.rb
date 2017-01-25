@@ -31,6 +31,14 @@ class App < Sinatra::Base
     def entry_repository
       @@entry_repository ||= EntryRepository.new(App.database)
     end
+
+    def title
+      str = ""
+      if @entry
+        str = @entry.title + " - "
+      end
+      str + "テスト的なブログ"
+    end
   end
 
   get "/" do
