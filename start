@@ -1,3 +1,10 @@
+echo "npm install start"
 npm install
+echo ""
+
+echo "bundle install start"
 bundle install
+echo ""
+
+echo "gulp start"
 gulp
