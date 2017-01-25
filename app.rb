@@ -58,7 +58,7 @@ class App < Sinatra::Base
   end
 
   get "/entries/new" do
-    protected!
+    # protected!
     slim :new
   end
 
@@ -69,7 +69,7 @@ class App < Sinatra::Base
   end
 
   post "/entries" do
-    protected!
+    # protected!
     entry = Entry.new
     entry.title = params[:title]
     entry.body = params[:body]
