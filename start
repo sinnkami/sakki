@@ -1,3 +1,10 @@
+sass = "sass"
+
+if [ -d $sass ]; then
+  mkdir sass/css > /dev/null
+fi
+cd ../.. > /dev/null
+
 echo "npm install start"
 npm install
 echo ""
