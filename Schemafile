@@ -4,5 +4,5 @@ create_table "entries", force: :cascade do |t|
   t.text     "body", charset: "utf8mb4"
   t.datetime "posted_at"
   t.boolean "published"
-  t.text "tags"
+  t.text "tags", charset: "utf8mb4"
 end
