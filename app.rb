@@ -32,12 +32,24 @@ class App < Sinatra::Base
       @@entry_repository ||= EntryRepository.new(App.database)
     end
 
+    def tags
+      @@tags ||= Tag.new(App.database)
+    end
+
     def title
       str = ""
-      if @entry
-        str = @entry.title + " - "
+      
+      if @entry.class == Entry
+        str = @entry.title + " - " # rescue params[:name] + " - "
+      elsif @entry.class == Array
+        str = params[:name] + " - "
       end
+
       str + "テスト的なブログ"
+    end
+
+    def overview
+      "テスト的な感じで作ってるブログなはず"
     end
 
     def protected!
@@ -71,6 +83,13 @@ class App < Sinatra::Base
 
     slim :entry
   end
+  get "/tags/:name" do
+    @entry = tags.fetch(params[:name].to_s)
+
+    p @entry
+
+    slim :tag
+  end
 
   post "/delete" do
     type = params[:type]
@@ -85,6 +104,10 @@ class App < Sinatra::Base
     entry = Entry.new
     entry.title = params[:title]
     entry.body = params[:body]
+
+    tags = params[:tags].split(/\W|\s|_/, 6)
+    tags.pop if tags.length > 5
+    entry.tags = tags.join(",")
 
     id = entry_repository.save(entry)
 

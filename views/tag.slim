@@ -1,0 +1,5 @@
+body 
+  h1 = params[:name]
+  - @entry.each do |row|
+    li
+      a(href="/entries/#{row.id}") = row.title
