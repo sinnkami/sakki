@@ -31,6 +31,21 @@ class EntryRepository
     return entry
   end
 
+  # 記事を消すところ
+  def delete(type, action)
+    if type == "id"
+      query = "DELETE FROM `entries` WHERE `id` = ?"
+    elsif type == "title"
+      query = "DELETE FROM `entries` WHERE `title` = ?"
+    end
+    
+    stmt = @db.prepare(query)
+    res = stmt.execute(action)
+    return "/"
+  end
+
+
+  # 最新記事を取得するところ
   def recent(limit = 5)
     query = "SELECT * FROM `entries` ORDER BY `id` DESC LIMIT ?"
     stmt = @db.prepare(query)
@@ -41,7 +56,7 @@ class EntryRepository
     end
   end
 
-  # eachで追加できる
+  # 全記事を取得するところ
   def each(&block)
     entries = []
     query = "SELECT * FROM `entries`"

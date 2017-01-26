@@ -1,6 +1,10 @@
+echo "public/cssの中身を初期化します"
+rm -rf public/css/*
+echo ""
 
 mkdir sass/css > /dev/null
 cd ../.. > /dev/null
+
 echo "npm install start"
 npm install
 echo ""

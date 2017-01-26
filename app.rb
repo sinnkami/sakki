@@ -62,13 +62,25 @@ class App < Sinatra::Base
     slim :new
   end
 
+  get "/entries/delete" do
+    slim :delete
+  end
+
   get "/entries/:id" do
     @entry = entry_repository.fetch(params[:id].to_i)
 
     slim :entry
   end
 
-  post "/entries" do
+  post "/delete" do
+    type = params[:type]
+    action = params[:action]
+
+    url = entry_repository.delete(type, action)
+    redirect to(url)
+  end
+
+  post "/create" do
     # protected!
     entry = Entry.new
     entry.title = params[:title]
