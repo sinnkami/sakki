@@ -38,7 +38,7 @@ class App < Sinatra::Base
 
     def title
       str = ""
-      
+
       if @entry.class == Entry
         str = @entry.title + " - " # rescue params[:name] + " - "
       elsif @entry.class == Array
@@ -86,8 +86,6 @@ class App < Sinatra::Base
   get "/tags/:name" do
     @entry = tags.fetch(params[:name].to_s)
 
-    p @entry
-
     slim :tag
   end
 
@@ -105,7 +103,7 @@ class App < Sinatra::Base
     entry.title = params[:title]
     entry.body = params[:body]
 
-    tags = params[:tags].split(/\W|\s|_/, 6)
+    tags = params[:tags].split(/[!"#$%&'()=~|{}`+*_?><,.\/_\]:;\[@¥^-]|\s|\p{blank}/, 6).compact.reject(&:empty?)
     tags.pop if tags.length > 5
     entry.tags = tags.join(",")
 
