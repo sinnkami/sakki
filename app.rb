@@ -118,8 +118,6 @@ class App < Sinatra::Base
     tags.pop(tags.length - 5) if tags.length > 5
     entry.tags = tags.join(",")
 
-    p entry.tags
-
     id = entry_repository.save(entry)
 
     redirect to("/entries/#{id}")

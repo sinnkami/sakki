@@ -1,0 +1,19 @@
+.blog-header {
+  width: 900px;
+  margin: 0px;
+  padding: 10px 0px;
+  background-image: url("/images/nc90580.png");
+  background-size: 100% 500px;
+  height: 100px;
+
+  h1 {
+    position: absolute;
+    left: 50px;
+  }
+
+  p {
+    position: absolute;
+    top: 60px;
+    left: 50px;
+  }
+}
