@@ -69,6 +69,10 @@ class App < Sinatra::Base
     slim :index
   end
 
+  get "/entries" do
+    slim :entries
+  end
+
   get "/entries/new" do
     # protected!
     slim :new
