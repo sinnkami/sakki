@@ -1,0 +1,6 @@
+.tags
+  - @entry.tags.split(",").each do |tag|
+    a(href="/tags/#{tag}") = "#{tag}"
+    span &nbsp;
+br
+p 投稿日時 : #{@entry.posted_at}

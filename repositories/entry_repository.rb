@@ -11,6 +11,9 @@ class EntryRepository
     columns = Entry::COLUMNS.reject { |key| key == :id }
     values = columns.map { |key| entry.instance_variable_get("@#{key}") }
 
+    # 時間を入れる
+    values[2] = Time.now
+
     query = "INSERT INTO `entries` (#{columns.join(", ")}) VALUES (#{columns.map { '?' }.join(', ')})"
     stmt = @db.prepare(query)
     stmt.execute(*values)
@@ -38,7 +41,7 @@ class EntryRepository
     elsif type == "title"
       query = "DELETE FROM `entries` WHERE `title` = ?"
     end
-    
+
     stmt = @db.prepare(query)
     res = stmt.execute(action)
     return "/"
