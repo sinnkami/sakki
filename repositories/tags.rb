@@ -19,6 +19,7 @@ class Tag
 
   def all
     tags = []
+    number = []
     query = "SELECT `tags` FROM `entries`"
     res = @db.query(query)
 
@@ -28,7 +29,7 @@ class Tag
         tags.push(e)
       end
     end
-
-    return tags.uniq
+    
+    return tags.inject(Hash.new(0)){|hash, a| hash[a] += 1; hash}
   end
 end

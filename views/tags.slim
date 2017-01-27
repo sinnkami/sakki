@@ -1,6 +1,7 @@
 body
   h1 タグ一覧
   ul
-    - tags.all.each do |tag|
+    - tags.all.each do |data|
       li 
-        a(href="/tags/#{tag}") = tag
+        a(href="/tags/#{data[0]}") = data[0]
+        span = " #{data[1]}"
