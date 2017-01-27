@@ -108,9 +108,13 @@ class App < Sinatra::Base
     entry.title = params[:title]
     entry.body = params[:body]
 
-    tags = params[:tags].split(/[!"#$%&'()=~|{}`+*_?><,.\/_\]:;\[@¥^-]|\s|\p{blank}/, 6).compact.reject(&:empty?)
-    tags.pop if tags.length > 5
+    tags = params[:tags].split(/\R/)
+    tags = tags.reject{ |e| e == "" }
+    tags.compact
+    tags.pop(tags.length - 5) if tags.length > 5
     entry.tags = tags.join(",")
+
+    p entry.tags
 
     id = entry_repository.save(entry)
 
