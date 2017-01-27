@@ -1,0 +1,6 @@
+body
+  h1 タグ一覧
+  ul
+    - tags.all.each do |tag|
+      li 
+        a(href="/tags/#{tag}") = tag

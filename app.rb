@@ -83,6 +83,11 @@ class App < Sinatra::Base
 
     slim :entry
   end
+
+  get "/tags" do
+    slim :tags
+  end
+
   get "/tags/:name" do
     @entry = tags.fetch(params[:name].to_s)
 

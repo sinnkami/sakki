@@ -1,4 +1,5 @@
 class Tag
+
   def initialize(db)
     @db = db
   end
@@ -14,5 +15,20 @@ class Tag
       entries.push(entry)
     end
     return entries
+  end
+
+  def all
+    tags = []
+    query = "SELECT `tags` FROM `entries`"
+    res = @db.query(query)
+
+    res.each do |row|
+      text = row["tags"].split(",")
+      text.each do |e|
+        tags.push(e)
+      end
+    end
+
+    return tags.uniq
   end
 end
