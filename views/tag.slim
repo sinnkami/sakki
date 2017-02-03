@@ -1,5 +1,7 @@
 body 
-  h1 = params[:name]
-  - @entry.each do |row|
-    li
-      a(href="/entries/#{row.id}") = row.title
+  == slim :blog_header
+  .main
+    h1 = "タグ検索 : #{params[:name]}"
+    - @entry.each do |row|
+      li
+        a(href="/entries/#{row.id}") = row.title

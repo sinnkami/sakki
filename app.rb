@@ -48,6 +48,10 @@ class App < Sinatra::Base
       str + "テスト的なブログ"
     end
 
+    def header_title
+      "テスト的なブログ"
+    end
+
     def overview
       "テスト的な感じで作ってるブログなはず"
     end

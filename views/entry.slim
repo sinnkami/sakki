@@ -1,4 +1,6 @@
 body
-  h1=@entry.title
-  == @entry.body_html
-  == slim :entry_footer
+  == slim :blog_header
+  .main
+    h1=@entry.title
+    == @entry.body_html
+    == slim :entry_footer

@@ -1,11 +1,10 @@
-link(rel="stylesheet" href="/css/header/blog-header.css")
+link(rel="stylesheet" href="/css/main/blog-overview.css")
 
 body
   == slim :blog_header
-  
-  h1 Hello, I'm #{@name || "sakki"}!
-
-  ul
-    - entry_repository.recent.each do |entry|
-      li
-        a(href="/entries/#{entry.id}")= entry.title
+  == slim :blog_overview
+  .main
+    ul
+      - entry_repository.recent.each do |entry|
+        li
+          a(href="/entries/#{entry.id}")= entry.title

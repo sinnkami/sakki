@@ -1,7 +1,9 @@
 body
-  h1 タグ一覧
-  ul
-    - tags.all.each do |data|
-      li 
-        a(href="/tags/#{data[0]}") = data[0]
-        span = " #{data[1]}"
+  == slim :blog_header
+  .main
+    h1 タグ一覧
+    ul
+      - tags.all.each do |data|
+        li 
+          a(href="/tags/#{data[0]}") = data[0]
+          span = " #{data[1]}"
