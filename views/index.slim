@@ -3,6 +3,8 @@ link(rel="stylesheet" href="/css/main/blog-overview.css")
 body
   == slim :blog_header
   == slim :blog_overview
+  == slim :calendar
+  
   .main
     ul
       - entry_repository.recent.each do |entry|
