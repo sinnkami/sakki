@@ -1,5 +1,14 @@
 link(rel="stylesheet" href="/css/main/blog-overview.css")
-
+link(rel="stylesheet" href="/css/index/index.css")
+javascript:
+  $(function(){
+    var $div = $("[class^=body]");
+    for (var i = 0; i < $div.length; i++){
+      var div = $div[i].textContent;
+      $div[i].innerHTML = div;
+    }
+    $div.show();
+  })
 body
   == slim :blog_header
   == slim :blog_overview
@@ -10,4 +19,6 @@ body
     ul
       - entry_repository.recent.each do |entry|
         li
-          a(href="/entries/#{entry.id}")= entry.title
+          .entry-title
+            a(href="/entries/#{entry.id}")= entry.title
+          div(class="body#{entry.id}") = entry.body_html

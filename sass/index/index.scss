@@ -1,0 +1,26 @@
+.main {
+  ul {
+    padding: 0px;
+    li {
+      list-style:none;
+      div[class*="body"] {
+        display: none;
+        margin: 20px;
+      }
+      .entry-title {
+        width: 95%;
+        color: rgb(100, 100, 100);
+        padding: 2px;
+        border: 0px;
+        border-left: 5px;
+        border-bottom: 1px;
+        border-style: solid;
+        border-color: rgb(170, 170, 170);
+      }
+      a {
+        text-decoration: none;
+        color: rgb(100, 100, 100);
+      }
+    }
+  }
+}

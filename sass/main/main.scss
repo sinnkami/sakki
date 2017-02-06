@@ -1,15 +1,18 @@
 html {
-  position: fixed;
+  position: relative;
   margin: 0px;
   top: 0px;
   left: 200px;
+  width: 900px;
+  background-color: black;
   background-image: url("/images/narnmu5eofo.png");
+  overflow: scroll;
 
   body {
     margin: 0px;
-    height: 1000px;
 
     .main {
+      color: rgb(180, 180, 180);
       margin: 25px;
       width: 630px;
     }
