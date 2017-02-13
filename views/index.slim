@@ -14,6 +14,7 @@ body
   == slim :blog_overview
   == slim :calendar
   == slim :profile
+  == slim :latest_article
   
   .main
     ul
@@ -23,9 +24,8 @@ body
             a(href="/entries/#{entry.id}")= entry.title
           div(class="body#{entry.id}") = entry.body_html
           .footer
-            .tags
-              - entry.tags.split(",").each do |tag|
-                a(href="/tags/#{tag}") = "#{tag}"
-                span &nbsp;
-            br
+            - entry.tags.split(",").each do |tag|
+              a(href="/tags/#{tag}") = tag
+              span &nbsp;
+            
             p 投稿日時 : #{entry.posted_at}
