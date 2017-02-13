@@ -1,0 +1,25 @@
+.latest_article {
+  position: absolute;
+  width: 195px;
+  top: 700px;
+  left: 670px;
+  background-color: white;
+  padding: 10px;
+  margin: 2px;
+  padding-bottom: 2px;
+  border: 1px;
+  border-left: 4px;
+  border-right: 4px;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+  ul {
+    margin-left: 10px;
+    padding: 0px;
+
+    li {
+      margin-top: 7px;
+      margin-bottom: 7px;
+    }
+  }
+}

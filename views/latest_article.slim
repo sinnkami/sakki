@@ -1,0 +1,6 @@
+.latest_article
+  span 最新記事
+  ul
+    - entry_repository.recent.each do |entry|
+      li
+        a(href="/entries/#{entry.id}")= entry.title
