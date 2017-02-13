@@ -1,5 +1,9 @@
 body 
   == slim :blog_header
+  == slim :calendar
+  == slim :profile
+  == slim :latest_article
+  
   .main
     h1 = "タグ検索 : #{params[:name]}"
     - @entry.each do |row|

@@ -1,5 +1,9 @@
 body
   == slim :blog_header
+  == slim :calendar
+  == slim :profile
+  == slim :latest_article
+  
   .main
     form(method="POST" action="/delete")
       input(type="radio" name="type" value="id" checked) id
