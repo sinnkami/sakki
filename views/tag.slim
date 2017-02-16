@@ -6,6 +6,7 @@ body
   
   .main
     h1 = "タグ検索 : #{params[:name]}"
-    - @entry.each do |row|
-      li
-        a(href="/entries/#{row.id}") = row.title
+    ul
+      - @entry.each do |row|
+        li
+          a(href="/entries/#{row.id}") = row.title
