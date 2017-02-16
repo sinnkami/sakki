@@ -15,10 +15,11 @@ body
   == slim :calendar
   == slim :profile
   == slim :latest_article
+  == slim :latest_tags
   
   .main
     ul
-      - entry_repository.recent.each do |entry|
+      - entry_repository.recent(5, @number*5).each do |entry|
         li
           .entry-title
             a(href="/entries/#{entry.id}")= entry.title
@@ -29,3 +30,19 @@ body
               span &nbsp;
             
             p 投稿日時 : #{entry.posted_at}
+            
+  
+    table
+      tr
+        td 
+          - if @number == 1
+            a.not-link 前のページ
+          - else
+            a(href="/pages/#{@number-1}") 前のページ
+        td 
+          a(href="/") HOME
+        td 
+          - if entry_repository.recent(5, @number*5-5).length != 5
+            a.not-link 次のページ
+          - else
+            a(href="/pages/#{@number+1}") 次のページ

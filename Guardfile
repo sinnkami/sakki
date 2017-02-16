@@ -17,5 +17,6 @@
 
 guard 'rack', port: 9292 do
   watch('Gemfile.lock')
-  watch(%r{.+\.rd$})
+  watch(%r{(config|models|public|repositories)/*})
+  watch(%r{.+\.rb})
 end

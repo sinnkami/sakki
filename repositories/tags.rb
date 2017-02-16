@@ -31,4 +31,20 @@ class Tag
 
     return tags.inject(Hash.new(0)){|hash, a| hash[a] += 1; hash}
   end
+
+  def recent(limit = 5)
+    tags = []
+    query = "SELECT * FROM `entries` ORDER BY `id` DESC LIMIT ?"
+    stmt = @db.prepare(query)
+    res = stmt.execute(limit)
+
+    res.each do |row|
+      text = row["tags"].split(",")
+      text.each do |e|
+        tags.push(e)
+      end
+    end
+
+    return tags.inject(Hash.new(0)){|hash, a| hash[a] += 1; hash}
+  end
 end

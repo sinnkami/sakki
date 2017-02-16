@@ -29,7 +29,11 @@ class EntryRepository
     res = stmt.execute(id)
 
     data = res.first
+    unless data
+      return false
+    end
     entry = Entry.new(data)
+
 
     return entry
   end
@@ -49,10 +53,10 @@ class EntryRepository
 
 
   # 最新記事を取得するところ
-  def recent(limit = 5)
-    query = "SELECT * FROM `entries` ORDER BY `id` DESC LIMIT ?"
+  def recent(limit = 5, id = 0)
+    query = "SELECT * FROM `entries` ORDER BY `id` DESC LIMIT ?, ?"
     stmt = @db.prepare(query)
-    res = stmt.execute(limit)
+    res = stmt.execute(id, limit)
 
     res.map do |row|
       Entry.new(row)

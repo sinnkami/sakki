@@ -1,0 +1,9 @@
+.latest_tags
+  span 最新タグ一覧
+  ul
+    - tags.recent.each do |data|
+      li 
+        a(href="/tags/#{data[0]}") = data[0]
+        
+  
+  a(href="/tags") タグ一覧へ

@@ -8,3 +8,18 @@ body
     h1=@entry.title
     == @entry.body_html
     == slim :entry_footer
+    
+    table
+      tr
+        td 
+          - if @number == 1
+            a.not-link 前のページ
+          - else
+            a(href="/entries/#{@number-1}") 前の記事
+        td 
+          a(href="/") HOME
+        td 
+          - if entry_repository.fetch(@number+1)
+            a(href="/entries/#{@number+1}") 次の記事
+          - else
+            a.not-link 次のページ

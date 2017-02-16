@@ -70,6 +70,7 @@ class App < Sinatra::Base
   end
 
   get "/" do
+    @number = 1;
     slim :index
   end
 
@@ -89,7 +90,14 @@ class App < Sinatra::Base
   get "/entries/:id" do
     @entry = entry_repository.fetch(params[:id].to_i)
 
+    @number = @entry.id
+
     slim :entry
+  end
+
+  get "/pages/:number" do
+    @number = params[:number].to_i;
+    slim :index
   end
 
   get "/tags" do
