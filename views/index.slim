@@ -19,7 +19,7 @@ body
   
   .main
     ul
-      - entry_repository.recent(5, @number*5).each do |entry|
+      - entry_repository.recent(5, @number*5-5).each do |entry|
         li
           .entry-title
             a(href="/entries/#{entry.id}")= entry.title

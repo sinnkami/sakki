@@ -13,7 +13,7 @@ body
       tr
         td 
           - if @number == 1
-            a.not-link 前のページ
+            a.not-link 前の記事
           - else
             a(href="/entries/#{@number-1}") 前の記事
         td 
@@ -22,4 +22,4 @@ body
           - if entry_repository.fetch(@number+1)
             a(href="/entries/#{@number+1}") 次の記事
           - else
-            a.not-link 次のページ
+            a.not-link 次の記事
